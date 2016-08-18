@@ -9,6 +9,7 @@ catalog: true
 tags:
     - 生活
 ---
+>  “躲了一辈子雨，雨会不会很难过.”
 
 > “Yeah It's on. ”
 
