@@ -87,7 +87,7 @@ tags:
 
 shell端跑起来，在localhost的4000端口就可以看到效果了，然后你就会感觉自己都要起飞了，要上天的感觉，哈哈
 <a href="#">
-    <img src="{{ site.baseurl }}/img/fly.jpg" alt="Post Sample Image">
+    <img src="{{ site.baseurl }}/img/fly-bg.jpg" alt="Post Sample Image">
 </a>
 接下来就是慢慢的补充内容，让博客丰富起来了，先从技术写起吧，还有就是前端技术都忘得快差不多了，好多效果都忘了怎么弄，只能慢慢去查了。
 
