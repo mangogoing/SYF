@@ -21,7 +21,8 @@ highlighter: rouge
 permalink: pretty
 paginate: 5
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
-keep_files: ["_includes","_layouts","_posts"]
+#keep_files: ["_includes","_layouts","_posts"]
+include: ["_includes","_layouts","_posts"]
 
 gems: [jekyll-paginate, jekyll-feed]
 
