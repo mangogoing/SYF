@@ -24,3 +24,8 @@ You can run `jekyll serve --watch` and `grunt watch` at the same time to watch f
 Visit Clean Blog's template overview page on Start Bootstrap at http://startbootstrap.com/template-overviews/clean-blog/ and leave a comment, email feedback@startbootstrap.com, or open an issue here on GitHub for support.
 
 ## jekyll server
+
+You should push on branch gh-pages
+command     git checkout --orphan gh-pages   may  help you 
+
+
