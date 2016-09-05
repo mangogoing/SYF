@@ -1,0 +1,135 @@
+---
+layout:     post
+title:      "android DualSim(4)"
+subtitle:   "\"Android 双卡之短信\""
+date:       2016-09-02 14:00:00
+author:     "石云飞"
+header-img: "img/message.jpg"
+catalog: true
+tags:
+    - 生活
+---
+> 
+
+
+## 引言
+关于双卡发短信，与双卡拨号类似，我们可通过数据库及暴露的SMSmanager类进行分析
+
+
+---
+
+## 1.SDK 4.0  发短信
+
+Android单卡发短信我们都知道，通过SMSmanager调用sendTextMessage方法可发送文字短信，照葫芦画瓢，在上层api中暴露的通信相关的类主要是SMSmanager类，
+我们进入SMSmanager类进行探索，同样，直接调转到该类都是关于单卡状态或者通信网络类型等方法，显然没有我们想找的双卡相关方法
+接下来我们对小米2A上该SMSmanager类（SDK为4.4）其进行反射看看小米有没有对该类进行添加自己的方法
+
+
+	D/methodName﹕ public static android.telephony.SmsManager android.telephony.SmsManager.getDefault()
+    D/methodName﹕ public static android.telephony.SmsManager android.telephony.SmsManager.getDefault(int)
+	 
+
+在这里我们发现小米比原生SMSmanager类多一个方法(其实不止一个方法，有兴趣的同学可以看看还有其他小米封装的方法)，显然小米对该类添加了一个自己的构造方法，而传入的int值就是代表卡一卡二的0和1
+那么我们就可以通过反射invoke这个getDefault方法，传入0或1即可得到对主卡副卡的SMSmanager实例，通过这个实例调用直接sendTextMessage发送短信
+
+
+		
+		
+## 2.SDK 5.0及6.0 发送短信
+关于Android6.0以后双卡发送短信，我们先从数据库入手，短信数据表URL：content://telephony/siminfo；
+所有插入过的SIM卡的相关信息都会存储在这个表里，再看看表里的字段
+
+<a href="#">
+    <img src="{{ site.baseurl }}/img/sms2.jpg" alt="Post Sample Image">
+</a>
+
+从截图中可以看到我用红框所框的字段，这两个是尤为关键的字段，也是对我们在功能开发的极其关键的两个字段。下面简单说一下这两个字段的含义：
+
+_id是表的主键，代表sim卡数据的索引值，从1开始，每次新插入的一张sim卡，数据表都会插入一行新数据，该行数据的_id值每次递增1（1，2，3，4，5……n这样递增），而不是更换一张卡更新一下对应卡槽的数据行的sim卡数据。
+
+sim_id代表当前卡所在的卡槽值，只有0，1，-1三个值，0代表当前卡插在卡槽1当中（主卡槽），1代表当前卡插在卡槽2当中（副卡槽），-1代表曾经手机插入过此卡，现在已经移除。
+
+其次从加入的API来看，Google加入了一系列管理双卡信息的类，其主要框架如下图所示：
+<a href="#">
+    <img src="{{ site.baseurl }}/img/sms3.jpg" alt="Post Sample Image">
+</a>
+
+我们知道平时都是使用SMSmanager的sendTextMessage发送短信，我们先看一个方法
+
+	 /**
+     * Get the the instance of the SmsManager associated with a particular subscription id
+     *
+     * @param subId an SMS subscription id, typically accessed using
+     *   {@link android.telephony.SubscriptionManager}
+     * @return the instance of the SmsManager associated with subId
+     */
+    public static SmsManager getSmsManagerForSubscriptionId(int subId) {
+        // TODO(shri): Add javadoc link once SubscriptionManager is made public api
+        synchronized(sLockObject) {
+            SmsManager smsManager = sSubInstances.get(subId);
+            if (smsManager == null) {
+                smsManager = new SmsManager(subId);
+                sSubInstances.put(subId, smsManager);
+            }
+            return smsManager;
+        }
+    }
+	
+看上面的注释，其实就是通过subid来获取SmsManager的实例，这下就与4.0中直接对应了（4.0可直接getDefault获取SmsManager实例），传入不同得值就得到不同的操作sim卡的实例，而这里
+传入的subid怎么获取呢，答案就是通过SubscriptionManager类，从上面的流程图可以看出，SubscriptionManager直接对上层暴露双卡信息,直接调用getSubId即可获取得到subid
+
+	public static int[] getSubId(int slotId) {
+        if (!isValidSlotId(slotId)) {
+            logd("[getSubId]- fail");
+            return null;
+        }
+
+        int[] subId = null;
+
+        try {
+            ISub iSub = ISub.Stub.asInterface(ServiceManager.getService("isub"));
+            if (iSub != null) {
+                subId = iSub.getSubId(slotId);
+            }
+        } catch (RemoteException ex) {
+            // ignore it
+        }
+
+        return subId;
+    }
+
+通过这个方法可以看出其需要传入一个slotId,其实就是我们前面说的卡一为0，卡二为1；
+到这里我们似乎可以得出一条完美的解决方案，即通过SubscriptionManager调用（反射）getSubId()方法得到subid，再通过SmsManager的getSmsManagerForSubscriptionId(int subId)方法获取到操作指定sim卡的
+SmsManager实例，再通过SmsManager.sendTextMessage指定号码发送短信。
+
+但是。。。。但是。。。这只是在大多数比较符合规范的厂商（三星）可行，像一些不遵守规范的厂商很可能在rom中直接改掉这个逻辑，甚至有些直接去掉了SubscriptionManager类，像这种情况我们通过以上方法显然不行
+那么我们需更深入寻找更好的方法，我们的思路很简单，只要获取到SmsManager单卡操作实例即可，按照这个思路，无非就是需要找到subid，那么我们直接从数据库中去取好了
+
+	  public static int getIdInDBBySimId(int simId, Context context) {
+        Uri uri = Uri.parse("content://telephony/siminfo");
+        Cursor cusor = null;
+        ContentResolver contentResolver = context.getContentResolver();
+
+        cusor = contentResolver.query(uri, new String[]{"_id", "sim_id"}, "sim_id=?", new String[]{String.valueOf(simId)}, null);
+        if (cusor != null) {
+            if (cusor.moveToFirst()) {
+                return cusor.getInt(cusor.getColumnIndex("_id"));
+            }
+        }
+        if (cusor != null) {
+            cusor.close();
+        }
+        return -1;
+    }
+	
+直接通过content://telephony/siminfo路径查询数据库，传入一个int值（0或1），获取对应的subid，再根据得到的subid即可获取SmsManager实例，就大功告成了！
+
+<a href="#">
+    <img src="{{ site.baseurl }}/img/message_end.jpg" alt="Post Sample Image">
+</a>
+
+如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
+
+—— SYF 后记于 2016.8.18
+
+

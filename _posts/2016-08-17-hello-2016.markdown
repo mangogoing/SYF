@@ -4,7 +4,7 @@ title:      "Hello 2016"
 subtitle:   " \"Hello World, Hello Blog\""
 date:       2016-08-17 14:00:00
 author:     "石云飞"
-header-img: ""
+header-img: "img/hello-2016/hello_2016.jpg"
 catalog: true
 tags:
     - 生活
@@ -97,7 +97,7 @@ shell端跑起来，在localhost的4000端口就可以看到效果了，然后�
 回顾这个博客的诞生，纯粹是出于个人兴趣、心血来潮。不过为自己开个博客记录工作生活也是很开心的。
 
 <a href="#">
-    <img src="{{ site.baseurl }}/img/post-bg-hello-2016.JPG" alt="Post Sample Image">
+    <img src="{{ site.baseurl }}/img/hello-2016/hello_2016_end.jpg" alt="Post Sample Image">
 </a>
 
 如果你恰好逛到了这里，希望你也能喜欢这个博客主题。

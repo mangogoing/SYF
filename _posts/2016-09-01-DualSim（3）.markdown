@@ -1,0 +1,153 @@
+---
+layout:     post
+title:      "android DualSim(3)"
+subtitle:   "\"Android 双卡之拨号\""
+date:       2016-09-01 14:00:00
+author:     "石云飞"
+header-img: "img/dial.jpg"
+catalog: true
+tags:
+    - 生活
+---
+> 
+
+
+## 引言
+关于双卡拨号，各个厂商提供的方案不一，在官方提供DualSim API之前（5.0以后才有），各个厂商由于没有统一的标准，各自开发，所以方案差别甚大，即使在5.0以后，也有很多厂商并不遵守官方规范，导致异常杂乱
+我自己研究过的手机型号主要是小米2A及波导（MTK方案），下面对这两个型号手机分享一下自己的经验
+
+
+---
+
+## 1.SDK 4.0  5.0拨号
+
+Android单卡拨号我们都知道，发送一个ACTION_CALL的INTENT就行：
+ 
+	Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
+                + phone_number));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+	
+ 
+
+而双卡拨号通过上一篇的数据库分析可知，必定是在数据库中关联了双卡标识的数据，而在上层api中暴露的通信相关的类主要是TelephonyManager类，
+我们进入TelephonyManager类进行探索，直接调转到该类都是关于单卡状态或者通信网络类型等方法，显然没有我们想找的双卡相关方法
+，接下来我们对小米2A上该类（SDK为4.4）其进行反射看看小米有没有对该类进行添加自己的方法
+
+	D/TelephonyManager﹕ public static android.telephony.TelephonyManager android.telephony.TelephonyManager.getDefault()
+    D/TelephonyManager﹕ public static android.telephony.TelephonyManager android.telephony.TelephonyManager.getDefault(int)
+	 
+在这里我们发现小米比原生telephoneManager类多一个方法(其实不止一个方法，有兴趣的同学可以看看还有其他小米封装的方法)，显然小米对该类添加了一个自己的构造方法，而传入的int值就是代表卡一卡二的0和1
+，那么我们就可以通过反射invoke这个getDefault方法，传入0或1即可得到对主卡副卡的TelephonyManager实例，通过这个实例即可获取卡一卡二的信息，包括卡的状态，卡是否可用等等。
+
+关于如何指定卡来拨号，我们到一般拨号通过ACTION_CALL，而指定卡号也应该是通过ACTION_CALL的Intent通过附带参数来进行，通过对小米拨号apk反编译可查看到，双卡相关的字段为slot_id，
+我们可通过下面的代码进行指定卡拨号
+
+	 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
+                + phone_number));
+     intent.putExtra("slot_id", cardNumber);
+     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+     context.startActivity(intent);
+	 
+需要说明的是不同的厂商使用的参数不一样，这里提供一个我找到相关的参数，遇到不一样的手机类型，可以附带以下参数进行尝试
+
+	 public static final String[] dualSimTypes = { "subscription", "Subscription", 
+        "com.android.phone.extra.slot", 
+        "phone", "com.android.phone.DialingMode", 
+        "simId", "simnum", "phone_type", 
+        "simSlot" };
+		
+另可参考stackoverflow关于双卡的问题讨论[网址](http://stackoverflow.com/questions/13231962/call-from-second-sim)
+		
+		
+## 2.SDK 6.0 拨号
+Android6.0以后，google对双卡api进一步进行了拆分，主要增加了类PhoneAccountHandle，所以相关的操作方法也有改变，在TelephonyManager中可通过getCallCapablePhoneAccounts来获取卡的数量
+
+	public static boolean isMultiSim(Context context){
+    boolean result = false;
+    TelecomManager telecomManager = (TelecomManager) context.getSystemService(Context.TELECOM_SERVICE);
+    if(telecomManager != null){
+        List<PhoneAccountHandle> phoneAccountHandleList = telecomManager.getCallCapablePhoneAccounts();
+        result = phoneAccountHandleList.size() >= 2;
+    }
+    return result;
+}
+
+指定sim卡拨号代码：
+
+	public static void call(Context context, int id, String telNum){
+    TelecomManager telecomManager = (TelecomManager) context.getSystemService(Context.TELECOM_SERVICE);
+
+    if(telecomManager != null){
+        List<PhoneAccountHandle> phoneAccountHandleList = telecomManager.getCallCapablePhoneAccounts();
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_CALL);
+        intent.setData(Uri.parse("tel:" + telNum));
+        intent.putExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, phoneAccountHandleList.get(id));
+        context.startActivity(intent);
+    }
+}
+
+获取最后一次通话代码：
+
+	public static String getLastestSim(Context context, String telNum){
+    String result = "SIM1";
+    Cursor cursor = null;
+    try {
+        cursor = context.getContentResolver().query(CallLog.Calls.CONTENT_URI, new String[]{CallLog.Calls.NUMBER, CallLog.Calls.PHONE_ACCOUNT_ID},
+                CallLog.Calls.NUMBER + " = ?", new String[]{telNum}, CallLog.Calls.DEFAULT_SORT_ORDER);
+        if (cursor != null && cursor.moveToFirst()) {
+            int subId = cursor.getInt(cursor.getColumnIndex(CallLog.Calls.PHONE_ACCOUNT_ID));
+            Logger.d(TAG, "getLastestSim subId:" + subId);
+            int slotId = getSlotIdUsingSubId(subId, context);
+            Logger.d(TAG, "getLastestSim slotId:" + slotId);
+            if(1 == slotId){
+                result = "SIM2";
+            }
+        }
+    }catch (Exception e){
+        e.printStackTrace();
+    }finally {
+        if(cursor != null){
+            cursor.close();
+        }
+    }
+
+    Logger.d(TAG, "getLastestSim result:" + result);
+
+    return result;
+}
+
+获取slot_id代码
+
+	public static int getSlotIdUsingSubId(int subId,Context context) throws InvocationTargetException {
+    int  result = 0;
+    try {
+        Class<?> clz = Class.forName(SUBSCRIPTION_MANAGER);
+        Object subSm;
+        Constructor<?> constructor = clz.getDeclaredConstructor(Context.class);
+        subSm  = constructor.newInstance(context);
+        Method mth = clz.getMethod("getSlotId", int.class);
+        result = (int)mth.invoke(subSm, subId);
+
+    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+            | IllegalArgumentException | NoSuchMethodException | InvocationTargetException e) {
+        e.printStackTrace();
+    }
+    return result;
+}
+
+
+
+
+
+<a href="#">
+    <img src="{{ site.baseurl }}/img/dial_end.jpg" alt="Post Sample Image">
+</a>
+
+如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
+
+—— SYF 后记于 2016.8.18
+
+
