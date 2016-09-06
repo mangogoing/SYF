@@ -94,7 +94,28 @@ provide shell access.
 
 说明成功了
 
-接下来就可以使用git命令 clone add commit push等，在push到远程你会发现不需要输入用户名和密码！非常方便。
+## 6.使用
+接下来就可以使用git命令 
+   
+	git clone git@github.com:*******/github-****.git
+	
+clone完之后相当于你在本地有一个repo，git于svn所不同的是git是分布式的，没有服务器概念。所有的人的机器上都有一个repo，每次提交都是给自己机器的repo
+
+	git init
+	
+init 命令为 初始化
+	
+	git add 文件名
+	
+add为生成快照并加入索引，可使用 add .添加全部 ，还有其他命令git rm等。
+	
+	git commit -m "说明"
+	
+commit可将索引提交
+
+	git push origin gh-pages
+	
+将本地更新推送到服务器，本地repo与远程repo合并，在push到远程你会发现不需要输入用户名和密码！非常方便。
 
 
 <a href="#">
