@@ -1,0 +1,108 @@
+---
+layout:     post
+title:      "SSH配置"
+subtitle:   "\"SSH keys\""
+date:       2016-09-02 14:00:00
+author:     "石云飞"
+header-img: "img/message.jpg"
+catalog: true
+tags:
+    - 生活
+---
+> 
+
+
+## 引言
+使用git的同学应该都接触过ssh协议，git传输协议一般有四种，本地协议（Local），HTTP 协议，SSH（Secure Shell）协议及 Git 协议。
+
+而Git是分布式的代码管理工具，远程的代码管理是基于SSH的，所以要使用远程的Git则需要SSH的配置。
+
+那么如何配置SSH呢
+
+
+---
+
+## 1.设置git的username和邮箱
+
+配置用户名
+
+	$ git config --global user.name "syf"
+	
+配置邮箱
+
+	$ git config --global user.email "xxxxxx@gmail.com"
+
+
+
+
+		
+		
+## 2.查看是否已经配置了ssh
+在你配置ssh之前需检查一下你的系统是否已经有配置过ssh，可以在shell端通过下面的代码查看
+
+	cat ~/.ssh/id_rsa.pub
+	
+如果你看到一长以ssh-rsa 或 ssh-dsa开头的串字符，说明你已经配置好了ssh
+
+如果没有配置好，使用以下命令进行获取新的ssh keys
+
+	ssh-keygen -t rsa -C "xxxxxx@gmail.com"
+	
+上面的命令会提示你填写保存位置和文件名及密码称来存储key，当然你可以直接敲击enter来使用默认配置。
+
+要查看你的sshkey可以使用下面的命令
+
+	cat ~/.ssh/id_rsa.pub
+
+## 3.添加密钥到ssh
+
+ssh-add 文件名,如密钥文件为~/.ssh/id_rsa：
+
+	ssh-add ~/.ssh/id_rsa
+
+## 4.在github上配置ssh
+
+配置[地址](https://github.com/settings/ssh)，此处有[help](https://help.github.com/articles/generating-an-ssh-key/)网址
+
+将密钥复制到剪切板可用下面命令
+
+	clip < ~/.ssh/id_rsa.pub
+	
+执行完在addkey中粘贴就ok
+
+## 5.测试是否连接成功
+打开gitbash，输入下面命令：
+
+	ssh -T git@github.com
+	
+你可能看到类似下面的提示：
+
+	The authenticity of host 'github.com (192.30.252.1)' can't be established.
+RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)?
+
+	The authenticity of host 'github.com (192.30.252.1)' can't be established.
+RSA key fingerprint is nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)?
+
+
+yes就好，点击后应该可以看到下面的提示
+
+
+	Hi username! You've successfully authenticated, but GitHub does not
+provide shell access.
+
+说明成功了
+
+接下来就可以使用git命令 clone add commit push等，在push到远程你会发现不需要输入用户名和密码！非常方便。
+
+
+<a href="#">
+    <img src="{{ site.baseurl }}/img/message_end.jpg" alt="Post Sample Image">
+</a>
+
+如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
+
+—— SYF 后记于 2016.8.18
+
+
