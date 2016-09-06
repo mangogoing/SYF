@@ -4,7 +4,7 @@ title:      "SSH配置"
 subtitle:   "\"SSH keys\""
 date:       2016-09-02 14:00:00
 author:     "石云飞"
-header-img: "img/message.jpg"
+header-img: "img/ssh/ssh.jpg"
 catalog: true
 tags:
     - 生活
@@ -119,7 +119,7 @@ commit可将索引提交
 
 
 <a href="#">
-    <img src="{{ site.baseurl }}/img/message_end.jpg" alt="Post Sample Image">
+    <img src="{{ site.baseurl }}/img/ssh/ssh_end.jpg" alt="Post Sample Image">
 </a>
 
 如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
