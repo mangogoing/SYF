@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "android DualSim(4)"
-subtitle:   "\"Android 双卡之短信\""
+title:      "Android 双卡之短信"
+subtitle:   "\"android DualSim(4)\""
 date:       2016-09-02 14:00:00
 author:     "石云飞"
 header-img: "img/message.jpg"
