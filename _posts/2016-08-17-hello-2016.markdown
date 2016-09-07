@@ -96,9 +96,13 @@ shell端跑起来，在localhost的4000端口就可以看到效果了，然后�
 
 回顾这个博客的诞生，纯粹是出于个人兴趣、心血来潮。不过为自己开个博客记录工作生活也是很开心的。
 
+---
+
 <a href="#">
     <img src="{{ site.baseurl }}/img/hello-2016/hello_2016_end.jpg" alt="Post Sample Image">
 </a>
+
+---
 
 如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
 

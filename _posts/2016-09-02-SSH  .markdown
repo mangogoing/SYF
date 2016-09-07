@@ -9,8 +9,13 @@ catalog: true
 tags:
     - 生活
 ---
-> 
 
+
+> "从S城到W城，有749公里，749000米。你和我之间，是不是比这更远？"
+
+>"Hey,come on."
+
+---
 
 ## 引言
 使用git的同学应该都接触过ssh协议，git传输协议一般有四种，本地协议（Local），HTTP 协议，SSH（Secure Shell）协议及 Git 协议。
@@ -36,13 +41,14 @@ tags:
 
 
 		
-		
+---
+
 ## 2.查看是否已经配置了ssh
 在你配置ssh之前需检查一下你的系统是否已经有配置过ssh，可以在shell端通过下面的代码查看
 
 	cat ~/.ssh/id_rsa.pub
 	
-如果你看到一长以ssh-rsa 或 ssh-dsa开头的串字符，说明你已经配置好了ssh
+如果你看到一长串以ssh-rsa 或 ssh-dsa开头的字符串，说明你已经配置好了ssh
 
 如果没有配置好，使用以下命令进行获取新的ssh keys
 
@@ -54,11 +60,15 @@ tags:
 
 	cat ~/.ssh/id_rsa.pub
 
+---
+
 ## 3.添加密钥到ssh
 
 ssh-add 文件名,如密钥文件为~/.ssh/id_rsa：
 
 	ssh-add ~/.ssh/id_rsa
+
+---
 
 ## 4.在github上配置ssh
 
@@ -69,6 +79,8 @@ ssh-add 文件名,如密钥文件为~/.ssh/id_rsa：
 	clip < ~/.ssh/id_rsa.pub
 	
 执行完在addkey中粘贴就ok
+
+---
 
 ## 5.测试是否连接成功
 打开gitbash，输入下面命令：
@@ -94,6 +106,8 @@ provide shell access.
 
 说明成功了
 
+---
+
 ## 6.使用
 接下来就可以使用git命令 
    
@@ -118,9 +132,12 @@ commit可将索引提交
 将本地更新推送到服务器，本地repo与远程repo合并，在push到远程你会发现不需要输入用户名和密码！非常方便。
 
 
+---
 <a href="#">
     <img src="{{ site.baseurl }}/img/ssh/ssh_end.jpg" alt="Post Sample Image">
 </a>
+
+---
 
 如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
 

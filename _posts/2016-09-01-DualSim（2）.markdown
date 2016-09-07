@@ -9,12 +9,20 @@ catalog: true
 tags:
     - 生活
 ---
-> 
 
+
+
+
+
+> "How should i greet thee?"
+
+> "With silence and tears."
+
+---
 
 ## 引言
 
->双卡手机由于存在两张卡，判断电话短信等数据都需要确定是来自哪张卡。
+双卡手机由于存在两张卡，判断电话短信等数据都需要确定是来自哪张卡。
 
 Android 官方在5.0中提供了双卡适配[api](https://developer.android.com/reference/android/telephony/SubscriptionManager.html#getActiveSubscriptionInfoList%28%29)
 
@@ -43,6 +51,8 @@ data/data/data/com.android.providers.contacts/contacts2.db
 
 ## 1.常见双卡适配类型
 
+---
+
 1.新增标识字段
 常见于：三星、moto等
 
@@ -64,6 +74,8 @@ data/data/data/com.android.providers.contacts/contacts2.db
     <img src="{{ site.baseurl }}/img/41.png" alt="Post Sample Image">
 </a>
 
+---
+
 ## 2.mtk系列芯片新增siminfo表
 
 常见于mtk系列芯片的手机
@@ -84,16 +96,27 @@ slot字段值为1：副卡
 
 slot字段值为-1：此卡没有安装在卡槽
 
+---
+
+
 <a href="#">
     <img src="{{ site.baseurl }}/img/52.png" alt="Post Sample Image">
 </a>
 
+---
+
+
 如下图，sms表和siminfo表的映射关系。sms表中的simId字段存储的是siminfo表中对应的_id，siminfo中对应的0，1是卡槽的标识。
 
 注意：siminfo表是系统维护的，第三方APP只需读取，不需要进行“写”操作。
+
+---
+
 <a href="#">
     <img src="{{ site.baseurl }}/img/71.png" alt="Post Sample Image">
 </a>
+
+---
 
 解决办法：
 
@@ -125,6 +148,9 @@ mtk在双卡双待方面的积累是很深厚长久的，在功能机时代就�
 
 方案2的存在是合理的，因为方案1同时存在缺陷。
 
+---
+
+
 ## 3. coolpad系列手机新增iteminfo表
 
 常见于：酷派系列手机，有以下特点：
@@ -137,11 +163,15 @@ mtk在双卡双待方面的积累是很深厚长久的，在功能机时代就�
 
 
 
+---
 
 
 <a href="#">
     <img src="{{ site.baseurl }}/img/sim_sql/sim_sql_end.jpg" alt="Post Sample Image">
 </a>
+
+---
+
 
 如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
 

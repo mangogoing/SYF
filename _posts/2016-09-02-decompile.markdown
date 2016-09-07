@@ -9,12 +9,21 @@ catalog: true
 tags:
     - 生活
 ---
-> 
 
+
+
+
+> "I changed who i was for you"
+
+
+> "But you didn't."
+
+---
 
 ## 引言
 Android开发，我们常常会看到一些别人开发的apk，被其精美的界面、漂亮的动画或者特殊的功能多吸引，这时候就想了解这些功能的实现过程，那么反编译就可以帮助到我们
 （注：反编译不是让各位开发者去对一个应用破解搞重装什么的，主要目的是为了促进开发者学习，借鉴好的代码，提升自我开发水平。）
+
 ---
 
 ## 1.准备工具
@@ -34,7 +43,8 @@ jd-gui可以查看dex2jar生成的jar文件即源码class文件
 
 jd-gui 下载[链接](http://java.decompiler.free.fr/?q=jdgui),csdn下载[链接](http://download.csdn.net/detail/vipzjyno1/7025145)
 
-		
+---
+	
 ## 2.工具使用
 
 ### 1. 查看布局文件
@@ -63,6 +73,8 @@ jd-gui 下载[链接](http://java.decompiler.free.fr/?q=jdgui),csdn下载[链接
     <img src="{{ site.baseurl }}/img/decompile/decompile4.jpg" alt="Post Sample Image">
 </a>
 
+---
+
 ### 2.查看class文件
 
 如果想了解目标apk的class文件，先将apk解压可得到class.dex，也可以直接把apk文件名称改成.zip文件，再解压或者打开改.zip文件，可获取class.dex，
@@ -89,11 +101,13 @@ jd-gui 下载[链接](http://java.decompiler.free.fr/?q=jdgui),csdn下载[链接
 
 
 
+---
 
 <a href="#">
     <img src="{{ site.baseurl }}/img/decompile/decompile_end.jpg" alt="Post Sample Image">
 </a>
 
+---
 如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
 
 —— SYF 后记于 2016.8.18

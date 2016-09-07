@@ -9,8 +9,18 @@ catalog: true
 tags:
     - 生活
 ---
-> 
 
+
+
+
+
+> "Sun for day  "
+
+> "Moon for night"
+
+> "You for ever."
+
+---
 
 ## 引言
 关于双卡发短信，与双卡拨号类似，我们可通过数据库及暴露的SMSmanager类进行分析
@@ -34,7 +44,8 @@ Android单卡发短信我们都知道，通过SMSmanager调用sendTextMessage方
 
 
 		
-		
+---
+	
 ## 2.SDK 5.0及6.0 发送短信
 关于Android6.0以后双卡发送短信，我们先从数据库入手，短信数据表URL：content://telephony/siminfo；
 所有插入过的SIM卡的相关信息都会存储在这个表里，再看看表里的字段
@@ -124,9 +135,14 @@ SmsManager实例，再通过SmsManager.sendTextMessage指定号码发送短信�
 	
 直接通过content://telephony/siminfo路径查询数据库，传入一个int值（0或1），获取对应的subid，再根据得到的subid即可获取SmsManager实例，就大功告成了！
 
+
+---
+
 <a href="#">
     <img src="{{ site.baseurl }}/img/message_end.jpg" alt="Post Sample Image">
 </a>
+
+---
 
 如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
 
