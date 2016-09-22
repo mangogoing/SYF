@@ -1,0 +1,129 @@
+---
+layout:     post
+title:      "Jfinal框架"
+subtitle:   "\"Java服务端架构\""
+date:       2016-09-21 14:00:00
+author:     "石云飞"
+header-img: "img/jfinal/jfinal.jpg"
+catalog: true
+tags:
+    - 生活
+---
+
+
+> "从S城到W城，有749公里，749000米。你和我之间，是不是比这更远？"
+
+>"Hey,come on."
+
+---
+
+## 引言
+公司最近需要搭建服务端，两年前刚毕业的时候做过一些服务端，当时使用的架构是SSH（struts+spring+hibernate），这个架构很普遍有很多优点比如易于维护，代码可读性好，健壮等，但使用起来相当重量级，适合于大型项目，而我目前只是做一个key的分发及分发响应项目，体量较小，jfinal是最好的选择了。
+
+JFinal 是基于 Java 语言的极速 WEB + ORM 框架，其核心设计目标是开发迅速、代码量少、学习简单、功能强大、轻量级、易扩展、Restful。在拥有Java语言所有优势的同时再拥有ruby、python、php等动态语言的开发效率！
+
+
+---
+
+## 1.搭建项目
+创建Dynamic Web Project
+
+---
+
+<a href="#">
+    <img src="{{ site.baseurl }}/img/jfinal/jfinal1.jpg" alt="Post Sample Image">
+</a>
+
+---
+
+注意：Target runtime 一定要选择<None>
+接下来修改 Default Output Folder，推荐输入 WebRoot\WEB-INF\classes；
+
+---
+
+<a href="#">
+    <img src="{{ site.baseurl }}/img/jfinal/jfinal2.jpg" alt="Post Sample Image">
+</a>
+
+---
+
+注意：此处的 Default out folder 必须要与 WebRoot\WEB-INF\classes 目录完全一致才可
+以使用 JFinal 集成的 Jetty 来启动项目。
+
+然后将 jfinal-xxx.jar 与 jetty-server-8.1.8.jar 拷贝至项目 WEB-INF\lib 下，项目就建好了。
+
+
+
+		
+---
+
+## 2.配置及添加java文件
+配置web.xml
+
+	<filter>
+	<filter-name>jfinal</filter-name>
+	<filter-class>com.jfinal.core.JFinalFilter</filter-class>
+	<init-param>
+	<param-name>configClass</param-name>
+	<param-value>demo.DemoConfig</param-value>
+	</init-param>
+	</filter>
+	<filter-mapping>
+	<filter-name>jfinal</filter-name>
+	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+注意<param-value>demo.DemoConfig</param-value>此处为JFinalConfig子类的路径。
+DemoConfig文件为extends JFinalConfig，复写其中方法进行相应配置，然后run起来，在浏览器中localhost可查看效果（根据DemoConfig文件中配置的Route方法输入不同url，如/me,则输入http://localhost/me查看）。
+
+
+---
+
+## 3.项目具体功能
+
+jfinal框架基本对每个需要用到的模块功能都有封装支持，只需进行相应的配置即可：
+JFinalConfig：基于 JFinal 的 web 项目需要创建一个继承自 JFinalConfig 类的子类，该类用于对整个 web项目进行配置。子类需实现五个抽象方法，分别可配置数据库的连接、JFinal访问路由、拦截器等。
+
+Controller:核心类，为 MVC 模式中的控制器，JFinalConfig的configRoute方法中添加的访问路由都对应一个Controller类，Controller的实现类添加不同方法可对应实现不同路由访问的功能。
+
+Model：核心类，充当 MVC 模式中的 Model 部分，在建立了model与表的对应关系后（在JFinalConfig配置插件可通过插件实现），可直接通过model子类对象操作数据库，非常方便。
+
+其他组件：
+ActiveRecord：可通过ActiveRecord操作数据库，简单快速。
+
+EhCachePlugin：缓存插件，通过使用 EhCachePlugin 可以提高系统的并发访问速度。
+
+Validator：校验组件，在 Validator 类中提供了非常方便的校验方法，学习简单，使用方便。
+
+RedisPlugin：支持 Redis 的极速化插件。
+
+---
+
+## 4.jfinal架构图与优缺点
+JFinal由 Handler、Interceptor、Controller、Render、Plugin 五大部分组成。其原理图如下：
+
+<a href="#">
+    <img src="{{ site.baseurl }}/img/jfinal/jfinal3.jpg" alt="Post Sample Image">
+</a>
+
+优点：支持零配置，上手快，支持ActiveRecord使得数据库开发极速，支持多视图，体积小只有几百k大小，插件化体系好扩展性强等。
+缺点：相对起来功能性与健壮性略弱，参考文档较少，相对起来不适合大型项目。
+
+如果你想快速实现一个小中型项目，那么试试Jfinal吧！
+
+
+
+
+
+---
+<a href="#">
+    <img src="{{ site.baseurl }}/img/jfinal/jfinal_end.jpg" alt="Post Sample Image">
+</a>
+
+---
+
+如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
+
+—— SYF 后记于 2016.8.18
+
+
