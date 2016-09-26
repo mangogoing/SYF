@@ -146,6 +146,6 @@ SmsManager实例，再通过SmsManager.sendTextMessage指定号码发送短信�
 
 如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
 
-—— SYF 后记于 2016.8.18
+—— SYF 后记于 2016.9.30
 
 

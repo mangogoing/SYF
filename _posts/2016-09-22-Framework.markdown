@@ -107,12 +107,22 @@ android源码下载需要翻墙，当然国内也有一些网盘什么的可以�
 
 刷机工具是用来将编译好的源码刷到手机上的工具，此处我获得的一份源码是MTK提供的，所以对应的刷机工具为FlashTool（可以百度下载）。
 
+
+
 ## 4.编译
 
 获取到源码后，在源码根目录下执行：
 
 	source build/envsetup.sh
 	
+	
+---
+<a href="#">
+    <img src="{{ site.baseurl }}/img/framework1/envsetup.jpg" alt="Post Sample Image">
+</a>
+
+---
+
 该命令为加载envsetup.sh脚本，该文件作用主要是：
 
 1. 加载了编译时使用到的函数命令，如：help，lunch，m，mm，mmm等
@@ -123,6 +133,13 @@ android源码下载需要翻墙，当然国内也有一些网盘什么的可以�
 
 	
 然后执行lunch选择平台选项，可按照自己需求选择user、debug、eng等不同版本类型。
+
+---
+<a href="#">
+    <img src="{{ site.baseurl }}/img/framework1/lunch.jpg" alt="Post Sample Image">
+</a>
+
+---
 
 接下来make命令进行编译，make命令有很多种，分别做一下说明：
 
@@ -162,11 +179,25 @@ android源码下载需要翻墙，当然国内也有一些网盘什么的可以�
 
 	make -j8（后面这个j4的意思是开几个线程编译，一核是两个线程）;
 	
+---
+<a href="#">
+    <img src="{{ site.baseurl }}/img/framework1/make_j8.jpg" alt="Post Sample Image">
+</a>
+
+---
+	
 第一次编译过程时间很长，我这边i5处理器编译完大概是4.5小时，编译完成后打开上面下好的flashtool配置刷到手机上。
 
-	
+---
+<a href="#">
+    <img src="{{ site.baseurl }}/img/framework1/flash_tool.jpg" alt="Post Sample Image">
+</a>
 
+---	
 
+注意：scatter_loading_file选择out/target/product（编译后的输出目录）下的***_scatter.txt文件。刷到手机上时，如果出现download过程进度条不动可能是usb接口问题，尝试插拔usb接口或者拔电池，刷到手机上后开启手机即可看到全新的刷入的系统。
+
+ps:音量键与开机键同时长按可进入Recovery模式。
 
 
 
@@ -189,6 +220,6 @@ android源码下载需要翻墙，当然国内也有一些网盘什么的可以�
 
 如果你恰好逛到了这里，希望你也能喜欢这个博客主题。
 
-—— SYF 后记于 2016.8.18
+—— SYF 后记于 2016.9.30
 
 
