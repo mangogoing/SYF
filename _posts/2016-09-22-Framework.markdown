@@ -117,7 +117,7 @@ android源码下载需要翻墙，当然国内也有一些网盘什么的可以�
 	
 	
 ---
-<a href="#">
+<a href="{{ site.baseurl }}/img/framework1/envsetup.jpg">
     <img src="{{ site.baseurl }}/img/framework1/envsetup.jpg" alt="Post Sample Image">
 </a>
 
@@ -135,7 +135,7 @@ android源码下载需要翻墙，当然国内也有一些网盘什么的可以�
 然后执行lunch选择平台选项，可按照自己需求选择user、debug、eng等不同版本类型。
 
 ---
-<a href="#">
+<a href="{{ site.baseurl }}/img/framework1/lunch.jpg">
     <img src="{{ site.baseurl }}/img/framework1/lunch.jpg" alt="Post Sample Image">
 </a>
 
@@ -189,7 +189,7 @@ android源码下载需要翻墙，当然国内也有一些网盘什么的可以�
 第一次编译过程时间很长，我这边i5处理器编译完大概是4.5小时，编译完成后打开上面下好的flashtool配置刷到手机上。
 
 ---
-<a href="#">
+<a href="{{ site.baseurl }}/img/framework1/flash_tool.jpg">
     <img src="{{ site.baseurl }}/img/framework1/flash_tool.jpg" alt="Post Sample Image">
 </a>
 
@@ -212,7 +212,7 @@ ps:音量键与开机键同时长按可进入Recovery模式。
 
 
 ---
-<a href="#">
+<a href="{{ site.baseurl }}/img/framework1/framework1_end.jpg">
     <img src="{{ site.baseurl }}/img/framework1/framework1_end.jpg" alt="Post Sample Image">
 </a>
 
