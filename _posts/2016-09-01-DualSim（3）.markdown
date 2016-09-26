@@ -147,7 +147,7 @@ Android6.0以后，google对双卡api进一步进行了拆分，主要增加了�
 
 
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/dial_end.jpg">
     <img src="{{ site.baseurl }}/img/dial_end.jpg" alt="Post Sample Image">
 </a>
 

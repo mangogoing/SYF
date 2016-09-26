@@ -79,7 +79,7 @@ Android提供了标准的无障碍服务,包括TalkBack,开发人员可以创建
 
 ---
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/accessbility/accessbility1.jpg">
     <img src="{{ site.baseurl }}/img/accessbility/accessbility1.jpg" alt="Post Sample Image">
 </a>
 
@@ -87,7 +87,7 @@ Android提供了标准的无障碍服务,包括TalkBack,开发人员可以创建
 
 ---
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/accessbility/accessbility2.jpg">
     <img src="{{ site.baseurl }}/img/accessbility/accessbility2.jpg" alt="Post Sample Image">
 </a>
 
@@ -205,7 +205,7 @@ ps:在我看来Accseebility服务不仅仅可以使用在无障碍化功能实�
 
 
 ---
-<a href="#">
+<a href="{{ site.baseurl }}/img/accessbility/accessbility_end.jpg">
     <img src="{{ site.baseurl }}/img/accessbility/accessbility_end.jpg" alt="Post Sample Image">
 </a>
 

@@ -50,26 +50,26 @@ jd-gui 下载[链接](http://java.decompiler.free.fr/?q=jdgui),csdn下载[链接
 ### 1. 查看布局文件
 当我们对目标apk文件的布局有兴趣的时候，我们使用apktool即可获取想要的文件，首先将下载好的apktool解压会得到三个文件：aapt.exe，apktool.bat，apktool.jar 
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/decompile/decompile1.jpg">
     <img src="{{ site.baseurl }}/img/decompile/decompile1.jpg" alt="Post Sample Image">
 </a>
 
 将我们要反编译的apk文件放到该目录下，如上图的Chubao.apk,再使用cmd进入shell，切换到解压文件所在目录，如我的解压文件在E:\fanbianyi\apktool
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/decompile/decompile2.jpg">
     <img src="{{ site.baseurl }}/img/decompile/decompile2.jpg" alt="Post Sample Image">
 </a>
 
 再执行命令apktool d Chubao.apk（此处我反编译的文件为Chubao.apk）
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/decompile/decompile3.jpg">
     <img src="{{ site.baseurl }}/img/decompile/decompile3.jpg" alt="Post Sample Image">
 </a>
 
 执行之后在apktool根目录下看到一个文件夹（此处我文件名为chubao），该文件夹res中就可以看到布局文件
 
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/decompile/decompile4.jpg">
     <img src="{{ site.baseurl }}/img/decompile/decompile4.jpg" alt="Post Sample Image">
 </a>
 
@@ -79,7 +79,7 @@ jd-gui 下载[链接](http://java.decompiler.free.fr/?q=jdgui),csdn下载[链接
 
 如果想了解目标apk的class文件，先将apk解压可得到class.dex，也可以直接把apk文件名称改成.zip文件，再解压或者打开改.zip文件，可获取class.dex，
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/decompile/decompile5.jpg">
     <img src="{{ site.baseurl }}/img/decompile/decompile5.jpg" alt="Post Sample Image">
 </a>
 
@@ -90,7 +90,7 @@ jd-gui 下载[链接](http://java.decompiler.free.fr/?q=jdgui),csdn下载[链接
 会生成classes_dex2jar.jar的文件（这个就是apk的class文件打包的jar文件），然后打开工具jd-gui文件夹里的jd-gui.exe，之后用该工具打开之前生成的classes_dex2jar.jar文件，便可以看到源码了，效果如下：
 
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/decompile/decompile6.jpg">
     <img src="{{ site.baseurl }}/img/decompile/decompile6.jpg" alt="Post Sample Image">
 </a>
 
@@ -103,7 +103,7 @@ jd-gui 下载[链接](http://java.decompiler.free.fr/?q=jdgui),csdn下载[链接
 
 ---
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/decompile/decompile_end.jpg">
     <img src="{{ site.baseurl }}/img/decompile/decompile_end.jpg" alt="Post Sample Image">
 </a>
 

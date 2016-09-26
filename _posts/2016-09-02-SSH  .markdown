@@ -133,7 +133,7 @@ commit可将索引提交
 
 
 ---
-<a href="#">
+<a href="{{ site.baseurl }}/img/ssh/ssh_end.jpg">
     <img src="{{ site.baseurl }}/img/ssh/ssh_end.jpg" alt="Post Sample Image">
 </a>
 

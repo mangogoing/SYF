@@ -30,7 +30,7 @@ JFinal 是基于 Java 语言的极速 WEB + ORM 框架，其核心设计目标�
 
 ---
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/jfinal/jfinal1.jpg">
     <img src="{{ site.baseurl }}/img/jfinal/jfinal1.jpg" alt="Post Sample Image">
 </a>
 
@@ -41,7 +41,7 @@ JFinal 是基于 Java 语言的极速 WEB + ORM 框架，其核心设计目标�
 
 ---
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/jfinal/jfinal2.jpg">
     <img src="{{ site.baseurl }}/img/jfinal/jfinal2.jpg" alt="Post Sample Image">
 </a>
 
@@ -102,7 +102,7 @@ RedisPlugin：支持 Redis 的极速化插件。
 ## 4.jfinal架构图与优缺点
 JFinal由 Handler、Interceptor、Controller、Render、Plugin 五大部分组成。其原理图如下：
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/jfinal/jfinal3.jpg">
     <img src="{{ site.baseurl }}/img/jfinal/jfinal3.jpg" alt="Post Sample Image">
 </a>
 
@@ -116,7 +116,7 @@ JFinal由 Handler、Interceptor、Controller、Render、Plugin 五大部分组�
 
 
 ---
-<a href="#">
+<a href="{{ site.baseurl }}/img/jfinal/jfinal_end.jpg">
     <img src="{{ site.baseurl }}/img/jfinal/jfinal_end.jpg" alt="Post Sample Image">
 </a>
 

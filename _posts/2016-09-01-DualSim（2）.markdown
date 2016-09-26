@@ -45,7 +45,7 @@ ps:分析之前需保证数据库干净不受污染，另外需卸载第三方�
 电话数据库位置：
 
 data/data/data/com.android.providers.contacts/contacts2.db
-<a href="#">
+<a href="{{ site.baseurl }}/img/19.png">
     <img src="{{ site.baseurl }}/img/19.png" alt="Post Sample Image">
 </a>
 
@@ -57,7 +57,7 @@ data/data/data/com.android.providers.contacts/contacts2.db
 常见于：三星、moto等
 
 举例：手机的短信数据库
-<a href="#">
+<a href="{{ site.baseurl }}/img/31.png">
     <img src="{{ site.baseurl }}/img/31.png" alt="Post Sample Image">
 </a>
 
@@ -70,7 +70,7 @@ data/data/data/com.android.providers.contacts/contacts2.db
 （1）确定对应的卡槽
 
 （2）需要数据库操作时，增加一列对于双卡标识字段的操作
-<a href="#">
+<a href="{{ site.baseurl }}/img/41.png">
     <img src="{{ site.baseurl }}/img/41.png" alt="Post Sample Image">
 </a>
 
@@ -99,7 +99,7 @@ slot字段值为-1：此卡没有安装在卡槽
 ---
 
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/52.png">
     <img src="{{ site.baseurl }}/img/52.png" alt="Post Sample Image">
 </a>
 
@@ -112,7 +112,7 @@ slot字段值为-1：此卡没有安装在卡槽
 
 ---
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/71.png">
     <img src="{{ site.baseurl }}/img/71.png" alt="Post Sample Image">
 </a>
 
@@ -130,7 +130,7 @@ slot字段值为-1：此卡没有安装在卡槽
 
 （2）需要操作时根据卡槽获得映射值写入db
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/661.png">
     <img src="{{ site.baseurl }}/img/661.png" alt="Post Sample Image">
 </a>
 
@@ -166,7 +166,7 @@ mtk在双卡双待方面的积累是很深厚长久的，在功能机时代就�
 ---
 
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/sim_sql/sim_sql_end.jpg">
     <img src="{{ site.baseurl }}/img/sim_sql/sim_sql_end.jpg" alt="Post Sample Image">
 </a>
 

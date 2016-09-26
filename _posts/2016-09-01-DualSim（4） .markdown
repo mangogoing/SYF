@@ -50,7 +50,7 @@ Android单卡发短信我们都知道，通过SMSmanager调用sendTextMessage方
 关于Android6.0以后双卡发送短信，我们先从数据库入手，短信数据表URL：content://telephony/siminfo；
 所有插入过的SIM卡的相关信息都会存储在这个表里，再看看表里的字段
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/sms2.jpg">
     <img src="{{ site.baseurl }}/img/sms2.jpg" alt="Post Sample Image">
 </a>
 
@@ -61,7 +61,7 @@ _id是表的主键，代表sim卡数据的索引值，从1开始，每次新插�
 sim_id代表当前卡所在的卡槽值，只有0，1，-1三个值，0代表当前卡插在卡槽1当中（主卡槽），1代表当前卡插在卡槽2当中（副卡槽），-1代表曾经手机插入过此卡，现在已经移除。
 
 其次从加入的API来看，Google加入了一系列管理双卡信息的类，其主要框架如下图所示：
-<a href="#">
+<a href="{{ site.baseurl }}/img/sms3.jpg">
     <img src="{{ site.baseurl }}/img/sms3.jpg" alt="Post Sample Image">
 </a>
 
@@ -138,7 +138,7 @@ SmsManager实例，再通过SmsManager.sendTextMessage指定号码发送短信�
 
 ---
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/message_end.jpg">
     <img src="{{ site.baseurl }}/img/message_end.jpg" alt="Post Sample Image">
 </a>
 

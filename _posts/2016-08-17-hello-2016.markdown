@@ -42,7 +42,7 @@ tags:
 接下来说说搭建这个博客的技术细节。  
 
 正好之前就有关注过 [GitHub Pages](https://pages.github.com/) + [Jekyll](http://jekyllrb.com/) 快速 Building Blog 的技术方案，非常轻松时尚。
-<a href="#">
+<a href="{{ site.baseurl }}/img/jk.jpg">
     <img src="{{ site.baseurl }}/img/jk.jpg" alt="Post Sample Image">
 </a>
 
@@ -57,7 +57,7 @@ tags:
 
 
 本来觉得最大的缺点可能是 GitHub 在国内访问起来太慢，所以考虑就到 GitCafe(Chinese GitHub Copy，现在被 Coding 收购了) 迁移了一个[镜像](http://huxpro.coding.me)出来。
-<a href="#">
+<a href="{{ site.baseurl }}/img/IMG_3144.PNG">
     <img src="{{ site.baseurl }}/img/IMG_3144.PNG" alt="Post Sample Image">
 </a>
 
@@ -67,12 +67,12 @@ tags:
 ---
 
 配置的过程中也没遇到什么大坑，基本就是 Git 的流程，相当顺手,下图为我用gitBash来push的过程
-<a href="#">
+<a href="{{ site.baseurl }}/img/git1.jpg">
     <img src="{{ site.baseurl }}/img/git1.jpg" alt="Post Sample Image">
 </a>
 
 大的 Jekyll 主题上直接 fork 了 Clean Blog（这个主题也相当有名，就不多赘述了）,Jekyll在Windows安装稍微复杂，注意ruby版本和devkit版本的匹配
-<a href="#">
+<a href="{{ site.baseurl }}/img/jk2.jpg">
     <img src="{{ site.baseurl }}/img/jk2.jpg" alt="Post Sample Image">
 </a>
 
@@ -81,12 +81,12 @@ tags:
 
 本地调试环境需要 `gem install jekyll`，还好我有vpn，翻墙多的同学可以去买一个用用，像我们这种程序员特别是玩android的程序员，google的许多重要网站都被墙了，备一个vpn再好不过。
 下图为在本地shell端调试
-<a href="#">
+<a href="{{ site.baseurl }}/img/keyllSever.jpg">
     <img src="{{ site.baseurl }}/img/keyllSever.jpg" alt="Post Sample Image">
 </a>
 
 shell端跑起来，在localhost的4000端口就可以看到效果了，然后你就会感觉自己都要起飞了，要上天的感觉，哈哈
-<a href="#">
+<a href="{{ site.baseurl }}/img/fly-bg.jpg">
     <img src="{{ site.baseurl }}/img/fly-bg.jpg" alt="Post Sample Image">
 </a>
 接下来就是慢慢的补充内容，让博客丰富起来了，先从技术写起吧，还有就是前端技术都忘得快差不多了，好多效果都忘了怎么弄，只能慢慢去查了。
@@ -98,7 +98,7 @@ shell端跑起来，在localhost的4000端口就可以看到效果了，然后�
 
 ---
 
-<a href="#">
+<a href="{{ site.baseurl }}/img/hello-2016/hello_2016_end.jpg">
     <img src="{{ site.baseurl }}/img/hello-2016/hello_2016_end.jpg" alt="Post Sample Image">
 </a>
 

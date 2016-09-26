@@ -180,7 +180,7 @@ android源码下载需要翻墙，当然国内也有一些网盘什么的可以�
 	make -j8（后面这个j4的意思是开几个线程编译，一核是两个线程）;
 	
 ---
-<a href="#">
+<a href="{{ site.baseurl }}/img/framework1/make_j8.jpg">
     <img src="{{ site.baseurl }}/img/framework1/make_j8.jpg" alt="Post Sample Image">
 </a>
 
