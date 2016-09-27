@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Framework开发"
-subtitle:   "\"android源码编译\""
+title:      "android源码编译"
+subtitle:   "\"系统开发\""
 date:       2016-09-22 14:00:00
 author:     "石云飞"
 header-img: "img/framework1/framework1.jpg"
@@ -11,7 +11,7 @@ tags:
 ---
 
 
-> "从S城到W城，有749公里，749000米。你和我之间，是不是比这更远？"
+> "当我站在情侣的面前，我觉得非常难过，我总是觉得，应该是你和我站在这里"
 
 >"Hey,come on."
 

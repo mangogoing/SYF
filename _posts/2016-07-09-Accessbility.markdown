@@ -2,7 +2,7 @@
 layout:     post
 title:      "Accessbility"
 subtitle:   "\"辅助功能\""
-date:       2016-09-22 14:00:00
+date:       2016-07-09 14:00:00
 author:     "石云飞"
 header-img: "img/accessbility/accessbility.jpg"
 catalog: true
@@ -11,7 +11,7 @@ tags:
 ---
 
 
-> "从S城到W城，有749公里，749000米。你和我之间，是不是比这更远？"
+> "每个人都有自己的习惯，我的习惯就是等着你的消息"
 
 >"Hey,come on."
 

@@ -2,7 +2,7 @@
 layout:     post
 title:      "Hello 2016"
 subtitle:   " \"Hello World, Hello Blog\""
-date:       2016-08-17 14:00:00
+date:       2016-01-18 14:00:00
 author:     "石云飞"
 header-img: "img/hello-2016/hello_2016.jpg"
 catalog: true

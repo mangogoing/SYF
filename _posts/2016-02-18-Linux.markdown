@@ -2,7 +2,7 @@
 layout:     post
 title:      "Linux系统"
 subtitle:   "\"ubuntu\""
-date:       2016-09-03 14:00:00
+date:       2016-02-18 14:00:00
 author:     "石云飞"
 header-img: "img/linux/linux.jpg"
 catalog: true

@@ -2,7 +2,7 @@
 layout:     post
 title:      "Android 双卡之拨号"
 subtitle:   "\"android DualSim(3)\""
-date:       2016-09-01 14:00:00
+date:       2016-04-15 14:00:00
 author:     "石云飞"
 header-img: "img/dial.jpg"
 catalog: true
